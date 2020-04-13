@@ -1,0 +1,12 @@
+[submodule "ArronEngine/vendor/spdlog"]
+	path = ArronEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "ArronEngine/vendor/imgui"]
+	path = ArronEngine/vendor/imgui
+	url = https://github.com/TheCherno/imgui.git
+[submodule "ArronEngine/vendor/glm"]
+	path = ArronEngine/vendor/glm
+	url = https://github.com/g-truc/glm.git
+[submodule "ArronEngine/vendor/glfw"]
+	path = ArronEngine/vendor/glfw
+	url = https://github.com/TheCherno/glfw.git
