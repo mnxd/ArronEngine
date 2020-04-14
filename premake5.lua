@@ -8,9 +8,17 @@ workspace "ArronEngine"
 		"Dist"
 	}
 
+	startproject "Sandbox"
+
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
-startproject "Sandbox"
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["glfw"] = "ArronEngine/vendor/glfw/include"
+
+include "ArronEngine/vendor/glfw"
+
+
 
 project "ArronEngine"
     location "ArronEngine"
@@ -32,7 +40,13 @@ project "ArronEngine"
 	includedirs
 	{
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.glfw}"
+	}
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
     filter "system:windows"

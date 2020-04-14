@@ -26,7 +26,7 @@ namespace ArronEngine{
 #define AE_CORE_ERROR(...)		::ArronEngine::Log::GetCoreLogger()->error(__VA_ARGS__)
 #define AE_CORE_FATAL(...)		::ArronEngine::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 
-//core log macros
+//client log macros
 #define AE_TRACE(...)			::ArronEngine::Log::GetClientLogger()->trace(__VA_ARGS__)
 #define AE_INFO(...)			::ArronEngine::Log::GetClientLogger()->info(__VA_ARGS__)
 #define AE_WARN(...)			::ArronEngine::Log::GetClientLogger()->warn(__VA_ARGS__)
