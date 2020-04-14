@@ -1,9 +1,8 @@
 #pragma once
 
+#include "AEpch.h"
 #include "ArronEngine/Core.h"
 
-#include <string>
-#include <functional>
 
 namespace ArronEngine
 {

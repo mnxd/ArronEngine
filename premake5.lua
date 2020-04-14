@@ -20,6 +20,9 @@ project "ArronEngine"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "AEpch.h"
+	pchsource "ArronEngine/src/AEpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
