@@ -3,6 +3,7 @@
 #include "Core.h"
 #include "Events/Event.h"
 #include "Window.h"
+#include "ArronEngine/Events/ApplicationEvent.h"
 
 namespace ArronEngine{
 
@@ -12,8 +13,11 @@ namespace ArronEngine{
 		Application();
 		virtual ~Application();
 
+		void OnEvent(Event& e);
 		void Run();
 	private:
+		bool OnWindowClosed(WindowCloseEvent& e);
+
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
 	};
