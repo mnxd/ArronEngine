@@ -15,10 +15,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["glfw"] = "ArronEngine/vendor/glfw/include"
+IncludeDir["Glad"] = "ArronEngine/vendor/Glad/include"
 
 include "ArronEngine/vendor/glfw"
-
-
+include "ArronEngine/vendor/Glad"
 
 project "ArronEngine"
     location "ArronEngine"
@@ -41,11 +41,13 @@ project "ArronEngine"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.glfw}"
+		"%{IncludeDir.glfw}",
+		"%{IncludeDir.Glad}"
 	}
 	links
 	{
 		"GLFW",
+        "Glad",
 		"opengl32.lib"
 	}
 
@@ -58,6 +60,7 @@ project "ArronEngine"
         {
             "AE_PLATFORM_WINDOWS",
             "AE_BUILD_DLL",
+            "GLFW_INCLUDE_NONE"
         }
 
         postbuildcommands

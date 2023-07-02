@@ -1,7 +1,6 @@
 #pragma once
 #include "ArronEngine/Window.h"
 #include <GLFW/glfw3.h>
-
 namespace ArronEngine {
 
 	class WindowsWindow :public Window
