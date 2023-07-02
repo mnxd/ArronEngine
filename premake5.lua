@@ -16,9 +16,15 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["glfw"] = "ArronEngine/vendor/glfw/include"
 IncludeDir["Glad"] = "ArronEngine/vendor/Glad/include"
+IncludeDir["ImGui"] = "ArronEngine/vendor/ImGui"
 
-include "ArronEngine/vendor/glfw"
-include "ArronEngine/vendor/Glad"
+group "Dependencies"
+    include "ArronEngine/vendor/glfw"
+    include "ArronEngine/vendor/Glad"
+    include "ArronEngine/vendor/ImGui"
+group ""
+
+
 
 project "ArronEngine"
     location "ArronEngine"
@@ -42,12 +48,14 @@ project "ArronEngine"
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.glfw}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}",
 	}
 	links
 	{
 		"GLFW",
         "Glad",
+        "ImGui",
 		"opengl32.lib"
 	}
 
