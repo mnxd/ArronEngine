@@ -24,8 +24,6 @@ group "Dependencies"
     include "ArronEngine/vendor/ImGui"
 group ""
 
-
-
 project "ArronEngine"
     location "ArronEngine"
     kind "SharedLib"
@@ -73,7 +71,7 @@ project "ArronEngine"
 
         postbuildcommands
         {
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
         }
 
     filter "configurations:Debug"
