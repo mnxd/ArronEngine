@@ -17,6 +17,7 @@ IncludeDir = {}
 IncludeDir["glfw"] = "ArronEngine/vendor/glfw/include"
 IncludeDir["Glad"] = "ArronEngine/vendor/Glad/include"
 IncludeDir["ImGui"] = "ArronEngine/vendor/ImGui"
+IncludeDir["glm"] = "ArronEngine/vendor/glm"
 
 group "Dependencies"
     include "ArronEngine/vendor/glfw"
@@ -39,7 +40,9 @@ project "ArronEngine"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 
 	includedirs
@@ -49,6 +52,7 @@ project "ArronEngine"
 		"%{IncludeDir.glfw}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}"
 	}
 	links
 	{
@@ -107,7 +111,8 @@ project "Sandbox"
     includedirs
     {
         "ArronEngine/vendor/spdlog/include",
-        "ArronEngine/src"
+        "ArronEngine/src",
+        "%{IncludeDir.glm}"
     }
 
     links
