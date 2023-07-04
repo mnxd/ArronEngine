@@ -9,12 +9,19 @@ public:
 
 	void OnUpdate() override
 	{
-		AE_INFO("ExampleLayer::Update");
+		if (ArronEngine::Input::IsKeyPressed(AE_KEY_TAB))
+			AE_TRACE("Tab key is pressed (poll)!");
 	}
 
 	void OnEvent(ArronEngine::Event& event) override
 	{
-		AE_TRACE("{0}", event);
+		if (event.GetEventType() == ArronEngine::EventType::KeyPressed)
+		{
+			ArronEngine::KeyPressedEvent& e = (ArronEngine::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == AE_KEY_TAB)
+				AE_TRACE("Tab key is pressed (event)!");
+			AE_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 
 };
