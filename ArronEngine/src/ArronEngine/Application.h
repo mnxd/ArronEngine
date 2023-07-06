@@ -7,6 +7,9 @@
 #include "ArronEngine/Events/Event.h"
 #include "ArronEngine/Events/ApplicationEvent.h"
 
+#include "ArronEngine/ImGui/ImGuiLayer.h"
+
+
 namespace ArronEngine{
 
 	class ARRONENGINE_API Application
@@ -24,9 +27,10 @@ namespace ArronEngine{
 
 		inline static Application& Get() { return *s_Instance; }
 	private:
-		bool OnWindowClosed(WindowCloseEvent& e);
+		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:

@@ -1,4 +1,7 @@
 #include <ArronEngine.h>
+
+
+
 class ExampleLayer : public ArronEngine::Layer
 {
 public:
@@ -12,6 +15,13 @@ public:
 		if (ArronEngine::Input::IsKeyPressed(AE_KEY_TAB))
 			AE_TRACE("Tab key is pressed (poll)!");
 	}
+
+	//virtual void OnImGuiRender() override
+	//{
+	//	ImGui::Begin("Test");
+	//	ImGui::Text("Hello World");
+	//	ImGui::End();
+	//}
 
 	void OnEvent(ArronEngine::Event& event) override
 	{
@@ -32,7 +42,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new ArronEngine::ImGuiLayer());
 	}
 	~Sandbox() 
 	{
