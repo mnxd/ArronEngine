@@ -19,9 +19,11 @@ include "ArronEngine/vendor/Glad"
 include "ArronEngine/vendor/imgui"
 project "ArronEngine"
 	location "ArronEngine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
+
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	pchheader "AEpch.h"
@@ -33,6 +35,12 @@ project "ArronEngine"
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
+	}
+
 	includedirs
 	{
 		"%{prj.name}/src",
@@ -42,6 +50,7 @@ project "ArronEngine"
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}"
 	}
+
 	links 
 	{ 
 		"GLFW",
@@ -49,8 +58,8 @@ project "ArronEngine"
 		"ImGui",
 		"opengl32.lib"
 	}
+
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 		defines
 		{
@@ -58,27 +67,26 @@ project "ArronEngine"
 			"AE_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
-		}
+
 	filter "configurations:Debug"
 		defines "AE_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 	filter "configurations:Release"
 		defines "AE_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 	filter "configurations:Dist"
 		defines "AE_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
+
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	files
@@ -108,12 +116,12 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "AE_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 	filter "configurations:Release"
 		defines "AE_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 	filter "configurations:Dist"
 		defines "AE_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"

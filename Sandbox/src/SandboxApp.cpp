@@ -1,6 +1,6 @@
 #include <ArronEngine.h>
 
-
+#include "imgui/imgui.h"
 
 class ExampleLayer : public ArronEngine::Layer
 {
@@ -16,12 +16,12 @@ public:
 			AE_TRACE("Tab key is pressed (poll)!");
 	}
 
-	//virtual void OnImGuiRender() override
-	//{
-	//	ImGui::Begin("Test");
-	//	ImGui::Text("Hello World");
-	//	ImGui::End();
-	//}
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
+	}
 
 	void OnEvent(ArronEngine::Event& event) override
 	{

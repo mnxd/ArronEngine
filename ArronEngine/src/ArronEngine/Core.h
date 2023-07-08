@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef AE_PLATFORM_WINDOWS
+#if AE_DYNAMIC_LINK
 	#ifdef AE_BUILD_DLL
 		#define ARRONENGINE_API __declspec(dllexport)
 	#else
 		#define ARRONENGINE_API __declspec(dllimport)
 	#endif 
+#else
+	#define ARRONENGINE_API
+#endif
 #else
 	#error Arron only supports windows!
 #endif
