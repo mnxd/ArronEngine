@@ -5,6 +5,8 @@
 #include "ArronEngine/Events/KeyEvent.h"
 #include <glad/glad.h>
 
+#include "Platform/OpenGL/OpenGLContext.h"
+
 namespace ArronEngine {
 
 	static bool s_GLFWInitialized = false;
@@ -48,9 +50,10 @@ namespace ArronEngine {
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		AE_CORE_ASSERT(status, "Faild to initialize GLad");
+
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -156,7 +159,7 @@ namespace ArronEngine {
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)

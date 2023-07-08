@@ -1,6 +1,9 @@
 #pragma once
 #include "ArronEngine/Window.h"
 #include <GLFW/glfw3.h>
+
+#include "ArronEngine/Renderer/GraphicsContext.h"
+
 namespace ArronEngine {
 
 	class WindowsWindow :public Window
@@ -25,6 +28,8 @@ namespace ArronEngine {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{
