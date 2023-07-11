@@ -7,10 +7,4 @@ namespace ArronEngine {
 		: m_DebugName(debugName)
 	{
 	}
-
-	Layer::~Layer()
-	{
-
-	}
-
 }
