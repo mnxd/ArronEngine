@@ -12,6 +12,7 @@
 #include "ArronEngine/Renderer/Shader.h"
 #include "ArronEngine/Renderer/Buffer.h"
 #include "ArronEngine/Renderer/VertexArray.h"			
+#include "ArronEngine/Renderer/OrthographicCamera.h"	  
 
 namespace ArronEngine{
 
@@ -42,7 +43,7 @@ namespace ArronEngine{
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
-
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
